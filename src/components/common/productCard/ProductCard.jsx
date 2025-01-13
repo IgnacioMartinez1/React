@@ -1,9 +1,7 @@
-export const ProductCard = (props) => {
+export const Mensaje = (props) => {
   return (
     <div className="Productos">
-      <h2>{props.nombre}</h2>
-      <h2>{props.precio}</h2>
-      <h2>{props.descripcion}</h2>
+      <h2>{props.mensaje}</h2>
     </div>
   );
 };

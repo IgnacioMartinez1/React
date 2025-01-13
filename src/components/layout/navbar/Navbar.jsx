@@ -9,9 +9,9 @@ export const Navbar = () => {
       </div>
       <div>
         <ul className="list">
-          <li>sas</li>
-          <li>ses</li>
-          <li>sos</li>
+          <li>Postres dulces</li>
+          <li>Comida Salada</li>
+          <li>Como Contactarnos</li>
         </ul>
       </div>
       <div>
