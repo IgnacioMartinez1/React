@@ -1,0 +1,11 @@
+.item-detail {
+  padding: 16px;
+  margin: 16px;
+  text-align: center;
+}
+
+.imagen {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}

@@ -1,0 +1,6 @@
+.cart-widget {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 20px;
+}

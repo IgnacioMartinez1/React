@@ -1,0 +1,17 @@
+.Productos {
+  border: 1px solid #c1c1c1;
+  padding: 16px;
+  margin: 16px;
+  text-align: center;
+  flex: 1 1 calc(15% - 32px);
+  box-sizing: border-box;
+}
+.imagen {
+  border-radius: 5px;
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+}
+.pr {
+  margin: 10px;
+}
