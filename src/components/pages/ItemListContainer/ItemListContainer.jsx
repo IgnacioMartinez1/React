@@ -1,53 +1,61 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { products } from "../../../products";
+import { useState } from "react";
+
 import { ProductCard } from "../../common/productCard/ProductCard";
-import "./ItemListContainer.css";
+import { useEffect } from "react";
+import { useParams } from "react-router";
+import { db } from "../../../FireBaseConfig";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
-  const { category } = useParams(); // Asegúrate de que el parámetro se llame 'category'
+  const { name } = useParams();
 
   useEffect(() => {
-    let productsFiltered = products.filter(
-      (elemento) => elemento.category === category
-    );
+    let productsCollection = collection(db, "products");
+    let consulta = productsCollection;
+    if (name) {
+      let porcionDeLaColeccion = query(
+        productsCollection,
+        where("category", "==", name)
+      );
+      consulta = porcionDeLaColeccion;
+    }
 
-    const getProducts = new Promise((resolve, reject) => {
-      const isLogged = true;
-      if (isLogged) {
-        resolve(!category ? products : productsFiltered);
-      } else {
-        reject({ statusCode: 400, message: "algo salio mal" });
-      }
-    });
-
+    const getProducts = getDocs(consulta);
     getProducts
-      .then((response) => {
-        setItems(response);
+      .then((res) => {
+        const array = res.docs.map((elemento) => {
+          return { id: elemento.id, ...elemento.data() };
+        });
+        setItems(array);
       })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [category]);
+      .catch((error) => console.log(error));
+  }, [name]);
 
   return (
-    <div className="menulist">
-      {items.map((elemento) => {
-        return (
-          <ProductCard
-            key={elemento.id}
-            imageUrl={elemento.imageUrl}
-            title={elemento.title}
-            price={elemento.price}
-            description={elemento.description}
-            stock={elemento.stock}
-            category={elemento.category}
-            id={elemento.id}
-          />
-        );
-      })}
-    </div>
+    <>
+      <h1>Catalogo General</h1>
+      {items.length === 0 ? (
+        <h1>cargando..</h1>
+      ) : (
+        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+          {items.map((elemento) => {
+            return (
+              <ProductCard
+                key={elemento.id}
+                imageUrl={elemento.imageUrl}
+                title={elemento.title}
+                price={elemento.price}
+                description={elemento.description}
+                stock={elemento.stock}
+                category={elemento.category}
+                id={elemento.id}
+              />
+            );
+          })}
+        </div>
+      )}
+    </>
   );
 };
 

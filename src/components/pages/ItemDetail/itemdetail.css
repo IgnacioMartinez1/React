@@ -1,11 +1,83 @@
 .item-detail {
-  padding: 16px;
-  margin: 16px;
+  border: 1px solid #c1c1c1;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #fff;
 }
 
 .imagen {
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.item-detail h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.item-detail p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.item-detail .price {
+  font-size: 28px;
+  color: #e91e63;
+  margin-bottom: 20px;
+}
+
+.item-detail .counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.item-detail .counter h2 {
+  margin: 0;
+}
+
+.item-detail .counter-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.item-detail .counter button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #405be5;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.item-detail .counter button:hover {
+  background-color: #405be5;
+}
+
+.item-detail .add-to-cart {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #405be5;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.item-detail .add-to-cart:hover {
+  background-color: #405be5;
 }
